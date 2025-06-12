@@ -1,0 +1,40 @@
+.task {
+  padding: 10px;
+  margin: 5px 0;
+  background: #333;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px;
+}
+.task.completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #333;
+  margin: 6px 0;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+}
+
+.task-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.delete-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: red;
+  cursor: pointer;
+}
+
+.task:hover .delete-btn {
+  display: inline-block;
+}

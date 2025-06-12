@@ -1,0 +1,29 @@
+<h1>Welcome to Mood-Based Todo App</h1>
+
+<button id="weather-btn">Check Weather</button>
+<button id="toggle-completed-btn">Show Completed Tasks</button>
+
+<div id="weather-modal" class="modal hidden">
+  <h2>Current Weather</h2>
+  <p>Temperature: <span id="weather-temp"></span></p>
+  <p>Condition: <span id="weather-condition"></span></p>
+  <p>Humidity: <span id="weather-humidity"></span></p>
+  <button onclick="closeModal()">Close</button>
+</div>
+
+<div id="task-list">
+  <h3>Backlog Tasks</h3>
+  <ul id="backlog-tasks"></ul>
+</div>
+
+<div id="completed-section" class="hidden">
+  <h3>Completed Tasks</h3>
+  <ul id="completed-tasks"></ul>
+</div>
+
+<script src="/js/weather.js"></script>
+<script src="/js/tasks.js"></script>
+<div id="suggested-tasks-section">
+  <h3>Suggested Tasks for Today</h3>
+  <ul id="suggested-tasks"></ul>
+</div>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Slider with Cookie</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  .slider-container {
+    width: 300px;
+    margin-bottom: 20px;
+  }
+  input[type="range"] {
+    width: 100%;
+  }
+  .value-display {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+<div class="slider-container">
+  <label for="mySlider">Select a value:</label><br />
+  <input type="range" id="mySlider" min="0" max="100" step="1" />
+  <div class="value-display" id="valueDisplay">Value: 50</div>
+</div>
+
+<button id="resetBtn">Reset Slider</button>
+
+<script>
+  const slider = document.getElementById('mySlider');
+  const valueDisplay = document.getElementById('valueDisplay');
+  const resetBtn = document.getElementById('resetBtn');
+
+  // Helper function to set cookie
+  function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days*24*60*60*1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+  }
+
+  // Helper function to get cookie
+  function getCookie(name) {
+    const cname = name + "=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const parts = decodedCookie.split(';');
+    for(let i = 0; i < parts.length; i++) {
+      let c = parts[i].trim();
+      if (c.indexOf(cname) === 0) {
+        return c.substring(cname.length, c.length);
+      }
+    }
+    return "";
+  }
+
+  // Update slider display and cookie when slider value changes
+  slider.addEventListener('input', () => {
+    const val = slider.value;
+    valueDisplay.textContent = `Value: ${val}`;
+    setCookie('sliderValue', val, 1); // expires in 1 day
+  });
+
+  // On page load, read cookie and set slider position
+  window.addEventListener('load', () => {
+    let savedValue = getCookie('sliderValue');
+    if (savedValue !== "") {
+      slider.value = savedValue;
+      valueDisplay.textContent = `Value: ${savedValue}`;
+    } else {
+      slider.value = 50; // default value
+      valueDisplay.textContent = `Value: 50`;
+    }
+  });
+
+  // Reset button clears cookie and resets slider
+  resetBtn.addEventListener('click', () => {
+    setCookie('sliderValue', "", -1); // Delete cookie by setting expiry in past
+    slider.value = 50;
+    valueDisplay.textContent = `Value: 50`;
+  });
+</script>
+
+</body>
+</html>
