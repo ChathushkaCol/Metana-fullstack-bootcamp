@@ -1,0 +1,14 @@
+{{#each jokes}}
+  <div style="margin-bottom: 20px;">
+    <p>{{this.content}}</p>
+    <p>Rating: {{this.rating}}</p>
+
+    <form action="/jokes/{{this._id}}/upvote" method="POST" style="display: inline;">
+      <button type="submit">👍</button>
+    </form>
+
+    <form action="/jokes/{{this._id}}/downvote" method="POST" style="display: inline;">
+      <button type="submit">👎</button>
+    </form>
+  </div>
+{{/each}}
