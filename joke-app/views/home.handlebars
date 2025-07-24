@@ -1,0 +1,35 @@
+<h1>Joke Generator & Collector</h1>
+
+<form action="/submit" method="POST">
+  <input type="text" name="content" placeholder="Enter a joke..." required>
+  <button type="submit">Submit Joke</button>
+</form>
+
+
+<ul>
+  {{#each jokes}}
+  <div class="joke">
+    <p><strong>{{content}}</strong></p>
+
+    <!-- Rating Form -->
+    <form method="POST" action="/rate">
+      <input type="hidden" name="id" value="{{_id}}">
+      <label>Rate this joke:</label>
+      <select name="rating">
+        <option value="1">⭐</option>
+        <option value="2">⭐⭐</option>
+        <option value="3">⭐⭐⭐</option>
+        <option value="4">⭐⭐⭐⭐</option>
+        <option value="5">⭐⭐⭐⭐⭐</option>
+      </select>
+      <button type="submit">Rate</button>
+    </form>
+
+    <p>Current Rating: {{rating}}</p>
+    <hr>
+  </div>
+{{/each}}
+
+</ul>
+
+
