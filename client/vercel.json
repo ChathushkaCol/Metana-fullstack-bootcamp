@@ -1,6 +1,7 @@
 {
   "version": 2,
-  "buildCommand": "cd client && npm install && npm run build",
-  "outputDirectory": "client/dist",
+  "buildCommand": "cd module-9/client && npm install && npm run build",
+  "outputDirectory": "module-9/client/dist",
   "framework": "vite"
 }
+
