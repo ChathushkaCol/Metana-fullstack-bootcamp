@@ -6,7 +6,8 @@ export default function Blogs() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const API_URL = "https://metana-fullstack-bootcamp-1-mf01.onrender.com/api/blogs";
+  // ✅ Hardcode Render backend API URL
+  const API_URL = "https://metana-fullstack-bootcamp-1-mf81.onrender.com/api/blogs";
 
   useEffect(() => {
     axios
