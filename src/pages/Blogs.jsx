@@ -3,27 +3,38 @@ import axios from "axios";
 
 export default function Blogs() {
   const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // ✅ Use your Render backend URL
   const API_URL = "https://metana-fullstack-bootcamp-1-mf01.onrender.com/api/blogs";
 
   useEffect(() => {
     axios
       .get(API_URL)
-      .then((res) => setBlogs(res.data))
-      .catch((err) => console.error("Error fetching blogs:", err));
+      .then((res) => {
+        console.log("Fetched blogs:", res.data);
+        setBlogs(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching blogs:", err);
+        setError("Failed to load blogs");
+        setLoading(false);
+      });
   }, []);
 
   return (
     <div>
       <h1>Blog List</h1>
+      {loading && <p>Loading blogs...</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <ul>
         {blogs.length > 0 ? (
           blogs.map((blog) => (
             <li key={blog.id}>{blog.title}</li>
           ))
         ) : (
-          <p>No blogs found or loading...</p>
+          !loading && <p>No blogs available</p>
         )}
       </ul>
     </div>
