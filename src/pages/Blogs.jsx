@@ -6,14 +6,13 @@ export default function Blogs() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // ✅ Use your Render backend API
+  // ✅ Use full Render backend API URL
   const API_URL = "https://metana-fullstack-bootcamp-1-mf81.onrender.com/api/blogs";
 
   useEffect(() => {
     axios
       .get(API_URL)
       .then((res) => {
-        console.log("Fetched blogs:", res.data);
         setBlogs(res.data);
         setLoading(false);
       })
