@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-import api from "../api/axiosInstance";
+import axios from "axios";
 
 export default function Blogs() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const API_URL = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
-    api.get("/api/blogs")
+    axios.get(`${API_URL}/api/blogs`)
       .then((res) => {
         setBlogs(res.data);
         setLoading(false);
@@ -26,7 +28,9 @@ export default function Blogs() {
       {error && <p style={{ color: "red" }}>{error}</p>}
       <ul>
         {blogs.length > 0 ? (
-          blogs.map((blog) => <li key={blog.id}>{blog.title}</li>)
+          blogs.map((blog) => (
+            <li key={blog.id}>{blog.title}</li>
+          ))
         ) : (
           !loading && <p>No blogs available</p>
         )}
