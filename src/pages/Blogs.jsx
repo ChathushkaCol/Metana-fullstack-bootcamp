@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api/axiosInstance";
 
 export default function Blogs() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // ✅ Use full Render backend API URL
-  const API_URL = "https://metana-fullstack-bootcamp-1-mf81.onrender.com/api/blogs";
-
   useEffect(() => {
-    axios
-      .get('https://metana-fullstack-bootcamp-1-mf81.onrender.com/api/blogs')
+    api.get("/api/blogs")
       .then((res) => {
         setBlogs(res.data);
         setLoading(false);
@@ -30,9 +26,7 @@ export default function Blogs() {
       {error && <p style={{ color: "red" }}>{error}</p>}
       <ul>
         {blogs.length > 0 ? (
-          blogs.map((blog) => (
-            <li key={blog.id}>{blog.title}</li>
-          ))
+          blogs.map((blog) => <li key={blog.id}>{blog.title}</li>)
         ) : (
           !loading && <p>No blogs available</p>
         )}
