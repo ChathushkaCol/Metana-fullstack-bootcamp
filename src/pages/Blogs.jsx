@@ -6,11 +6,16 @@ export default function Blogs() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // ✅ Use env variable (fallback for safety)
-  const API_URL = import.meta.env.VITE_API_URL || "https://metana-fullstack-bootcamp-1-mf81.onrender.com";
+  const API_URL = import.meta.env.VITE_API_URL; // ✅ No fallback
 
   useEffect(() => {
-    console.log("✅ Fetching blogs from:", API_URL); // Debug log
+    console.log("✅ Fetching from:", API_URL);
+    if (!API_URL) {
+      setError("API URL is not set!");
+      setLoading(false);
+      return;
+    }
+
     axios
       .get(`${API_URL}/api/blogs`)
       .then((res) => {
@@ -18,7 +23,7 @@ export default function Blogs() {
         setLoading(false);
       })
       .catch((err) => {
-        console.error("❌ Error fetching blogs:", err);
+        console.error("Error fetching blogs:", err);
         setError("Failed to load blogs");
         setLoading(false);
       });
