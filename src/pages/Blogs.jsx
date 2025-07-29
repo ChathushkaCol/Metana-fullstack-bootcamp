@@ -11,7 +11,7 @@ export default function Blogs() {
 
   useEffect(() => {
     axios
-      .get(API_URL)
+      .get('https://metana-fullstack-bootcamp-1-mf81.onrender.com/api/blogs')
       .then((res) => {
         setBlogs(res.data);
         setLoading(false);
