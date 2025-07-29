@@ -7,7 +7,8 @@ export default function Blogs() {
   const [error, setError] = useState(null);
 
   // ✅ Use Vercel environment variable
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = "https://metana-fullstack-bootcamp-1-mf81.onrender.com/api/blogs";
+
 
   useEffect(() => {
     console.log("✅ Fetching from:", API_URL); // Debugging log
