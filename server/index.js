@@ -1,5 +1,13 @@
 import express from "express";
 import cors from "cors";
+
+app.use(cors({
+  origin: [
+    "http://localhost:5173", 
+    "https://your-vercel-project-name.vercel.app" // replace with actual Vercel domain
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+}));
 import dotenv from "dotenv";
 
 dotenv.config();
