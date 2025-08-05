@@ -6,12 +6,10 @@ export default function Blogs() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // ✅ Use Vercel env variable (or local during dev)
+  // ✅ API base URL from Vercel environment variable
   const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    console.log("✅ Fetching from:", API_URL);
-
     if (!API_URL) {
       setError("API URL is not set");
       setLoading(false);
@@ -19,17 +17,17 @@ export default function Blogs() {
     }
 
     axios
-      .get(`${API_URL}/api/blogs`) // ✅ Always use full URL
+      .get(API_URL) // ✅ No duplicate /api/blogs
       .then((res) => {
         setBlogs(res.data);
         setLoading(false);
       })
       .catch((err) => {
-        console.error("Fetch error:", err);
+        console.error("Error fetching blogs:", err);
         setError("Failed to load blogs");
         setLoading(false);
       });
-  }, []);
+  }, [API_URL]);
 
   return (
     <div>
