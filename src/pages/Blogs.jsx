@@ -6,20 +6,20 @@ export default function Blogs() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // ✅ Use environment variable
+  // ✅ Get API URL from Vite environment variable
   const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    console.log("✅ Fetching from:", API_URL);
+    console.log("✅ Fetching from:", API_URL); // Debugging log
 
     if (!API_URL) {
-      setError("API URL not set!");
+      setError("API URL is not set!");
       setLoading(false);
       return;
     }
 
     axios
-      .get(API_URL)
+      .get(API_URL) // ✅ No extra `/api/blogs` here
       .then((res) => {
         setBlogs(res.data);
         setLoading(false);
@@ -29,7 +29,7 @@ export default function Blogs() {
         setError("Failed to load blogs");
         setLoading(false);
       });
-  }, [API_URL]);
+  }, []);
 
   return (
     <div>
