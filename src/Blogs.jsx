@@ -5,25 +5,24 @@ export default function Blogs() {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [activeIndex, setActiveIndex] = useState(0); // ✅ Toggle state
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const API_URL = import.meta.env.VITE_API_URL;
 
-useEffect(() => {
-  console.log("✅ Fetching from:", `${API_URL}/api/blogs`);
+  useEffect(() => {
+    console.log("✅ Fetching from:", `${API_URL}/api/blogs`);
 
-  axios.get(`${API_URL}/api/blogs`)
-    .then((res) => {
-      setBlogs(res.data);
-      setLoading(false);
-    })
-    .catch((err) => {
-      console.error("Fetch error:", err);
-      setError("Failed to load blogs");
-      setLoading(false);
-    });
-}, []);
-
+    axios.get(`${API_URL}/api/blogs`)
+      .then((res) => {
+        setBlogs(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Fetch error:", err);
+        setError("Failed to load blogs");
+        setLoading(false);
+      });
+  }, []);
 
   const handleToggle = () => {
     setActiveIndex((prev) => (prev === blogs.length - 1 ? 0 : prev + 1));
@@ -32,7 +31,6 @@ useEffect(() => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-6">
       <h1 className="text-4xl font-bold mb-6 text-gray-800">Blog List</h1>
-
       {loading && <p className="text-blue-500">Loading blogs...</p>}
       {error && <p className="text-red-500">{error}</p>}
 
