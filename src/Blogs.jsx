@@ -6,29 +6,30 @@ export default function Blogs() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // ✅ Use environment variable
+  // ✅ Use environment variable without duplicating /api/blogs
   const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    console.log("✅ Fetching from:", `${API_URL}/api/blogs`); // Debugging log
+    console.log("✅ Fetching from:", API_URL);
+
     if (!API_URL) {
-      setError("API URL is not set!");
+      setError("API URL not set.");
       setLoading(false);
       return;
     }
 
     axios
-      .get(`${API_URL}/api/blogs`)
+      .get(API_URL)
       .then((res) => {
         setBlogs(res.data);
         setLoading(false);
       })
       .catch((err) => {
-        console.error("Error fetching blogs:", err);
+        console.error("Fetch error:", err);
         setError("Failed to load blogs");
         setLoading(false);
       });
-  }, [API_URL]);
+  }, []);
 
   return (
     <div>
