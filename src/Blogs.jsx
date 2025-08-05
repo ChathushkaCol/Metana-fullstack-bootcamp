@@ -9,26 +9,21 @@ export default function Blogs() {
 
   const API_URL = import.meta.env.VITE_API_URL;
 
-  useEffect(() => {
-    console.log("✅ Fetching from:", API_URL);
-    if (!API_URL) {
-      setError("API URL is not set!");
-      setLoading(false);
-      return;
-    }
+useEffect(() => {
+  console.log("✅ Fetching from:", `${API_URL}/api/blogs`);
 
-    axios
-      .get(API_URL)
-      .then((res) => {
-        setBlogs(res.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error fetching blogs:", err);
-        setError("Failed to load blogs");
-        setLoading(false);
-      });
-  }, []);
+  axios.get(`${API_URL}/api/blogs`)
+    .then((res) => {
+      setBlogs(res.data);
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.error("Fetch error:", err);
+      setError("Failed to load blogs");
+      setLoading(false);
+    });
+}, []);
+
 
   const handleToggle = () => {
     setActiveIndex((prev) => (prev === blogs.length - 1 ? 0 : prev + 1));
