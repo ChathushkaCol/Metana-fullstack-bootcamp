@@ -1,25 +1,11 @@
-import React, { useEffect, useState } from 'react';
+// src/App.jsx
+import React from "react";
+import Blogs from "./Blogs.jsx";
 
-function App() {
-  const [blogs, setBlogs] = useState([]);
-
-  useEffect(() => {
-    fetch('/api/blogs')
-      .then((res) => res.json())
-      .then((data) => setBlogs(data))
-      .catch((err) => console.error(err));
-  }, []);
-
+export default function App() {
   return (
-    <div>
-      <h1>Blog List</h1>
-      <ul>
-        {blogs.map((blog) => (
-          <li key={blog.id}>{blog.title}</li>
-        ))}
-      </ul>
-    </div>
+    <main className="min-h-screen bg-slate-50 p-6">
+      <Blogs />
+    </main>
   );
 }
-
-export default App;
