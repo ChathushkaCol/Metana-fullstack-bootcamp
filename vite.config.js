@@ -1,8 +1,11 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-console.log("🔍 Build-time API URL:", process.env.VITE_API_URL);
-
 export default defineConfig({
   plugins: [react()],
+  server: {
+    proxy: {
+      "/api": "http://localhost:3000" // ✅ Forward /api calls to backend
+    }
+  }
 });

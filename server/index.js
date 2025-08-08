@@ -1,38 +1,26 @@
+// server/index.js
 import express from "express";
 import cors from "cors";
 
-app.use(cors({
-  origin: [
-    "http://localhost:5173", 
-    "https://your-vercel-project-name.vercel.app" // replace with actual Vercel domain
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-}));
-import dotenv from "dotenv";
+const app = express();                // ✅ create app FIRST
 
-dotenv.config();
-
-const app = express();
-const PORT = process.env.PORT || 3000;
-
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Test route
-app.get("/", (req, res) => {
+// health check (optional)
+app.get("/", (_req, res) => {
   res.send("API running...");
 });
 
-// Example API route
-app.get("/api/blogs", (req, res) => {
+// example API
+app.get("/api/blogs", (_req, res) => {
   res.json([
     { id: 1, title: "First Blog" },
-    { id: 2, title: "Second Blog" }
+    { id: 2, title: "Second Blog" },
   ]);
 });
 
-// Start the server
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`✅ Server running on port ${PORT}`);
+  console.log(`✅ Server running on http://localhost:${PORT}`);
 });
