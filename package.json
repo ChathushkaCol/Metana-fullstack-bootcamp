@@ -1,21 +1,23 @@
 {
-  "name": "client",
+  "name": "metana-fullstack-bootcamp",
   "version": "1.0.0",
+  "private": true,
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "axios": "^1.4.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "dev:server": "cd server && cross-env NODE_ENV=test node src/server.js",
+    "dev:client": "cd client && npm run dev",
+    "dev:servers": "concurrently -k \"npm:dev:server\" \"npm:dev:client\"",
+    "test:server": "npm --prefix server test",
+    "test:client": "npm --prefix client test",
+    "test": "npm run test:server && npm run test:client",
+    "e2e:start": "cross-env E2E_BASE_URL=http://localhost:5173 jest -c e2e/jest-e2e.config.js",
+    "e2e": "start-server-and-test dev:servers http-get://localhost:5173 e2e:start"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.0.0",
-    "autoprefixer": "^10.4.21",
-    "postcss": "^8.5.6",
-    "tailwindcss": "^3.4.17",
-    "vite": "^4.4.0"
+    "concurrently": "^9.0.0",
+    "cross-env": "^7.0.3",
+    "jest": "^29.7.0",
+    "selenium-webdriver": "^4.27.0",
+    "start-server-and-test": "^2.0.0",
+    "wait-on": "^8.0.0"
   }
 }
