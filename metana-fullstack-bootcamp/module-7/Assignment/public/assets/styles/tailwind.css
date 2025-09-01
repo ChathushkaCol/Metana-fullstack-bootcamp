@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "tailwindcss";
+@theme {
+  --color-brand: #b4d455;
+  --font-display: "Satoshi", sans-serif;
+}

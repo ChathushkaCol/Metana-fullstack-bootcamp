@@ -1,0 +1,41 @@
+.container {
+  text-align: center;
+  margin-top: 50px;
+  font-family: Arial, sans-serif;
+}
+
+button {
+  padding: 12px 24px;
+  margin: 10px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.main-button {
+  background-color: #3498db;
+  color: white;
+}
+
+.reset-button {
+  background-color: #f1c40f;
+  color: black;
+}
+
+.bonus-button {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.bonus-button.active {
+  background-color: #27ae60;
+}
+
+.game-over {
+  color: red;
+  font-weight: bold;
+  margin-top: 20px;
+}
+

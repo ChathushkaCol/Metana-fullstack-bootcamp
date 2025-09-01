@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mood-Based Todo App</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <h1>Mood-Based Todo App</h1>
+    <div id="app"></div>
+    <script src="components/app.js"></script>
+</body>
+</html>

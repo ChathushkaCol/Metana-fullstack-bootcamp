@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mood-Based To-Do App</title>
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="Styles/index.css" />
+  <link rel="stylesheet" href="Styles/tasksComponent.css" />
+  <link rel="stylesheet" href="Styles/suggestedTaskComponent.css" />
+  <link rel="stylesheet" href="Styles/taskCreationForm.css" />
+  <link rel="stylesheet" href="Styles/moodSelecter.css" />
+  <link rel="stylesheet" href="Styles/loginForm.css" />
+</head>
+<body>
+  
+  <!-- ✅ Header Section -->
+  <header>
+    <div id="user-info">
+      <span id="welcome-name">Welcome, <strong id="username">Guest</strong></span>
+      <button id="profile-btn">👤</button>
+      <button id="mood-btn">😊 Mood</button>
+    </div>
+  </header>
+
+  <!-- ✅ Main To-Do Layout -->
+  <main>
+    <section id="tasks-section">
+      <h2>Ready for Today?</h2>
+      <p id="task-count"></p>
+      <button id="add-task-btn">+ Add Task</button>
+      <button id="complete-all-btn">Complete All</button>
+      <button id="show-completed-btn">Show Completed</button>
+      <div id="task-list"></div>
+    </section>
+
+    <section id="suggested-tasks-section">
+      <h3>Suggested Tasks</h3>
+      <div id="suggested-task-list"></div>
+    </section>
+  </main>
+
+  <!-- ✅ Modals (Initially Hidden) -->
+  <div id="login-modal" class="modal hidden"></div>
+  <div id="profile-modal" class="modal hidden"></div>
+  <div id="task-form-modal" class="modal hidden"></div>
+  <div id="edit-task-modal" class="modal hidden"></div>
+  <div id="mood-slider-modal" class="modal hidden"></div>
+
+  <!-- ✅ Toast Notification -->
+  <div id="toast" class="hidden"></div>
+
+  <!-- JS Scripts -->
+  <script src="Scripts/index.js"></script>
+  <script src="Scripts/tasksComponent.js"></script>
+  <script src="Scripts/suggestedTaskComponent.js"></script>
+  <script src="Scripts/taskCreationForm.js"></script>
+  <script src="Scripts/moodSelecter.js"></script>
+  <script src="Scripts/loginForm.js"></script>
+</body>
+</html>
