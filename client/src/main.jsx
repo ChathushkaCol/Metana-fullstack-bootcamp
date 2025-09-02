@@ -1,3 +1,5 @@
+import "./index.css";
+import "./index.css";
 // client/src/main.jsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
