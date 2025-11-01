@@ -1,2 +1,4 @@
-@import "tailwindcss";
-/* your optional custom rules can go here */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
