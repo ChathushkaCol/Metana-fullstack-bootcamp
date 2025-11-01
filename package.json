@@ -19,5 +19,8 @@
     "selenium-webdriver": "^4.27.0",
     "start-server-and-test": "^2.0.0",
     "wait-on": "^8.0.0"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.78.0"
   }
 }
