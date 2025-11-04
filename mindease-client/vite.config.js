@@ -1,2 +1,5 @@
-/** @type {import('vite').UserConfig} */
-module.exports = { build: { outDir: 'dist', emptyOutDir: true } };
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  build: { outDir: 'dist', emptyOutDir: true },
+});
