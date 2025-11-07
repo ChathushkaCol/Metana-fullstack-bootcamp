@@ -4,3 +4,7 @@ dist
 build
 authorized_keys
 authorized_keys
+
+.env
+.env.*
+*.env.local
