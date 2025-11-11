@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Magic Number Game</title>
+</head>
+<body>
+  <h1>Open the Console (F12) to Play the Game!</h1>
+  <script>
+    // Magic Number Game
+    const magicNumber = Math.floor(Math.random() * 10) + 1;
+    const maxAttempts = 5;
+    let attempts = 0;
+    let guess;
+
+    alert("🎩 Welcome to the Magic Number Game!\nI'm thinking of a number between 1 and 10.\nYou have 5 tries to guess it!");
+
+    while (attempts < maxAttempts) {
+      guess = parseInt(prompt(`Attempt ${attempts + 1}: Enter your guess (1-10):`));
+
+      if (isNaN(guess) || guess < 1 || guess > 10) {
+        alert("🚫 Invalid input! Please enter a number between 1 and 10.");
+        continue;
+      }
+
+      attempts++;
+
+      if (guess === magicNumber) {
+        alert(`🎉 Correct! The magic number was ${magicNumber}.\nYou guessed it in ${attempts} attempt(s).`);
+        break;
+      } else if (guess < magicNumber) {
+        alert("📉 Too low!");
+      } else {
+        alert("📈 Too high!");
+      }
+    }
+
+    if (guess !== magicNumber) {
+      alert(`💥 Out of attempts! The magic number was ${magicNumber}.\nBetter luck next time!`);
+    }
+  </script>
+</body>
+</html>
